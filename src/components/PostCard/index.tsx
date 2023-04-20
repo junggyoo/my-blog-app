@@ -38,7 +38,7 @@ export default function PostCard({ post, slug, className }: PostCardProps) {
       <div className="text-end mr-3">
         <time className="text-sm text-gray-500">{date}</time>
       </div>
-      <div className="text-center">
+      <div className="text-center p-5">
         <h3 className="text-lg font-semibold">{title}</h3>
         <p className="">{subTitle}</p>
         <CategoryBadge label={category} />

@@ -29,19 +29,17 @@ const POSTS = [
 
 export default function FeaturedSection() {
   return (
-    <section className="py-20">
-      <div className="container mx-auto">
-        <h2 className="text-lg font-semibold">Featured Posts</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
-          {POSTS.map((post) => (
-            <PostCard
-              className="h-96"
-              key={post.id}
-              post={post}
-              slug={post.id.toString()}
-            />
-          ))}
-        </div>
+    <section className="mt-20 mb-10">
+      <h2 className="text-lg font-semibold">Featured Posts</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
+        {POSTS.map((post) => (
+          <PostCard
+            className="h-96"
+            key={post.id}
+            post={post}
+            slug={post.id.toString()}
+          />
+        ))}
       </div>
     </section>
   );

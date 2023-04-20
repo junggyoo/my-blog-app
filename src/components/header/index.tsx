@@ -25,7 +25,7 @@ export default function Header() {
       <nav className="flex justify-between items-center">
         <div>
           <Link href="/" className="text-xl font-semibold">
-            Seize Blog
+            Jungq Blog
           </Link>
         </div>
         <div className="flex gap-3">
