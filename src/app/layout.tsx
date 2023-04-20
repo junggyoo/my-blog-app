@@ -19,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
+        <div className="min-[375px]:px-2 md:px-20">
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   );
