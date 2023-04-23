@@ -1,48 +1,38 @@
-'use client';
-
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 import { CategoryBadge } from '@/components';
 
-export interface Post {
-  date: string;
-  title: string;
-  subTitle: string;
-  category: string;
-  thumbnail?: string;
-}
+import { Post } from '@/types/posts';
 
 interface PostCardProps {
   post: Post;
-  slug: string;
-  className?: string;
 }
 
-export default function PostCard({ post, slug, className }: PostCardProps) {
-  const router = useRouter();
+export default function PostCard({ post }: PostCardProps) {
+  const { date, title, description, category, path } = post;
 
-  const { date, title, subTitle, category, thumbnail } = post;
   return (
-    <article
-      className={`rounded-md shadow-md min-w-40 min-h-40 cursor-pointer ${className}`}
-      onClick={() => router.push(`/posts/${slug}`)}
-    >
-      <Image
-        className="h-60 rounded-t-md"
-        width={500}
-        height={300}
-        src={thumbnail || ''}
-        alt="thumbnail"
-      />
-      <div className="text-end mr-3">
-        <time className="text-sm text-gray-500">{date}</time>
-      </div>
-      <div className="text-center p-5">
-        <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="">{subTitle}</p>
-        <CategoryBadge label={category} />
-      </div>
-    </article>
+    <Link href={`/posts/${path}`}>
+      <article className="rounded-md overflow-hidden shadow-md hover:shadow-xl">
+        <Image
+          className="w-full"
+          width={300}
+          height={200}
+          src={`/images/posts/${path}.png`}
+          alt={title}
+        />
+        <div className="flex flex-col items-center  p-3">
+          <time className="self-end text-sm text-gray-500">
+            {date.toString()}
+          </time>
+          <h3 className="w-full truncate text-center text-lg font-semibold">
+            {title}
+          </h3>
+          <p className="w-full truncate text-center">{description}</p>
+          <CategoryBadge label={category} />
+        </div>
+      </article>
+    </Link>
   );
 }

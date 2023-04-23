@@ -1,10 +1,10 @@
-import { Inter } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
 
-import { Header } from '@/components';
+import { Footer, Header } from '@/components';
 
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const sans = Open_Sans({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Seize Blog',
@@ -17,12 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="min-[375px]:px-2 md:px-40">
-          <Header />
-          {children}
-        </div>
+    <html lang="en" className={sans.className}>
+      <body className="flex flex-col min-[375px]:px-2 md:px-40">
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

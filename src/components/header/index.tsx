@@ -23,11 +23,9 @@ export default function Header() {
   return (
     <header className="py-4">
       <nav className="flex justify-between items-center">
-        <div>
-          <Link href="/" className="text-xl font-semibold">
-            Jungq Blog
-          </Link>
-        </div>
+        <Link href="/">
+          <h1 className="text-2xl font-semibold">Jungq Blog</h1>
+        </Link>
         <div className="flex gap-3">
           {MENU_ITEMS.map((item) => (
             <Link
