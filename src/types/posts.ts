@@ -9,4 +9,6 @@ export interface Post {
 
 export interface PostData extends Post {
   content: string;
+  nextPost: Post | null;
+  prevPost: Post | null;
 }

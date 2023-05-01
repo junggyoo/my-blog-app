@@ -20,26 +20,14 @@ export async function getAllPosts(): Promise<Post[]> {
 
 export async function getPost(filename: string): Promise<PostData> {
   const filePath = path.join(process.cwd(), 'data/posts', `${filename}.md`);
-  const metadata = await getAllPosts().then((posts) =>
-    posts.find((post) => post.path === filename)
-  );
-
-  if (!metadata)
-    throw new Error(`${filename}에 해당하는 포스트를 찾을 수 없음`);
-
-  const content = await readFile(filePath, 'utf-8');
-  return { ...metadata, content };
-}
-
-export async function getPostNavigation(filename: string): Promise<{
-  prevPost: Post | null;
-  nextPost: Post | null;
-}> {
   const posts = await getAllPosts();
+  const post = posts.find((post) => post.path === filename);
+
+  if (!post) throw new Error(`${filename}에 해당하는 포스트를 찾을 수 없음`);
+
   const currentIndex = posts.findIndex((post) => post.path === filename);
-
-  const prevPost = posts[currentIndex - 1] ?? null;
-  const nextPost = posts[currentIndex + 1] ?? null;
-
-  return { prevPost, nextPost };
+  const nextPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
+  const prevPost = currentIndex < posts.length ? posts[currentIndex + 1] : null;
+  const content = await readFile(filePath, 'utf-8');
+  return { ...post, nextPost, prevPost, content };
 }
