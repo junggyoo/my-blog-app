@@ -20,7 +20,7 @@ export default function FilterablePosts({
 }: FilterablePostsProps) {
   const [selectedCategory, setSelectedCategory] = useState(ALL_POSTS);
 
-  const filtered =
+  const filteredPosts =
     selectedCategory === ALL_POSTS
       ? posts
       : posts.filter((post) => post.category === selectedCategory);
@@ -31,7 +31,7 @@ export default function FilterablePosts({
 
   return (
     <section className="flex justify-between m-4">
-      <PostsGrid posts={filtered} />
+      <PostsGrid posts={filteredPosts} />
       <Categories
         categories={[ALL_POSTS, ...categories]}
         selectedCategory={selectedCategory}

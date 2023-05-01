@@ -1,6 +1,6 @@
 import { Open_Sans } from 'next/font/google';
 
-import { Footer, Header } from '@/components';
+import { Header } from '@/components';
 
 import './globals.css';
 
@@ -18,10 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={sans.className}>
-      <body className="flex flex-col min-[375px]:px-2 md:px-40">
+      <body className="flex flex-col mx-auto min-[375px]:px-2 md:px-40 max-w-7xl">
         <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );
