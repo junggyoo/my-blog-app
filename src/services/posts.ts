@@ -27,7 +27,8 @@ export async function getPost(filename: string): Promise<PostData> {
 
   const currentIndex = posts.findIndex((post) => post.path === filename);
   const nextPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
-  const prevPost = currentIndex < posts.length ? posts[currentIndex + 1] : null;
+  const prevPost =
+    currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
   const content = await readFile(filePath, 'utf-8');
   return { ...post, nextPost, prevPost, content };
 }
