@@ -11,8 +11,8 @@ interface PostPageProps {
   };
 }
 
-export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPost(params.slug);
+export default async function PostPage({ params: { slug } }: PostPageProps) {
+  const post = await getPost(slug);
 
   return (
     <main className="rounded-2xl bg-gray-100 shadow-lg m-4">
