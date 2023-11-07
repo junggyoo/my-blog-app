@@ -25,6 +25,9 @@ export default function AboutPage() {
           React-query, Mobx, Recoil, Zustand <br />
           Storybook, React-hook-form, Git, Jira <br />
         </p>
+        <a target="_target" title="이건 머지">
+          타이틀
+        </a>
       </section>
     </main>
   );
