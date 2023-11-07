@@ -23,14 +23,16 @@ export default function Header() {
   return (
     <header className="py-4">
       <nav className="flex justify-between items-center">
-        <div>
-          <Link href="/" className="text-2xl font-semibold">
-            Seize Blog
-          </Link>
-        </div>
-        <div className="flex gap-4">
+        <Link href="/">
+          <h1 className="text-2xl font-semibold">Jungq Blog</h1>
+        </Link>
+        <div className="flex gap-3">
           {MENU_ITEMS.map((item) => (
-            <Link href={item.href} key={item.href} className="font-extralight">
+            <Link
+              href={item.href}
+              key={item.href}
+              className="text-xs font-extralight"
+            >
               {item.label}
             </Link>
           ))}
